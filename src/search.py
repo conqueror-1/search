@@ -96,12 +96,12 @@ def depthFirstSearch(problem):
     #using util as it is used in the library
     #dfs traversal uses stack and not queue!! Your teacher taught you wrong!
     dfsStack = util.Stack() 
-    dfsStack.push (startNode,[])
+    dfsStack.push ((startNode,[]))
 
     while not dfsStack.isEmpty():
         currNode, action = dfsStack.pop()
         
-        if currNode not in dfsStack:
+        if currNode not in visited:
             visited.append(currNode)
 
             if problem.isGoalState(currNode):
