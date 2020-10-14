@@ -94,6 +94,7 @@ def depthFirstSearch(problem):
     #initializing empty list to store visited nodes
     visited = []
     #using util as it is used in the library
+    #dfs traversal uses stack and not queue!! Your teacher taught you wrong!
     dfsStack = util.Stack() 
     dfsStack.push (startNode,[])
 
@@ -114,7 +115,27 @@ def depthFirstSearch(problem):
 def breadthFirstSearch(problem):
     """Search the shallowest nodes in the search tree first."""
     "*** YOUR CODE HERE ***"
-    util.raiseNotDefined()
+    startNode = problem.getStartState()
+    if problem.isGoalState(startNode):
+        return []
+
+    bfsQueue = util.Queue()
+    visited = []
+
+    bfsQueue.push ((startNode,[]))
+
+    while not bfsQueue.isEmpty():
+        currNode, action = bfsQueue.pop()
+        if currNode not in visited:
+            visited.append (currNode)
+
+            if problem.isGoalState(currNode):
+                return action
+
+            for nextNode, actions, cost in problem.getSuccessor(currNode):
+                Action = action + [actions]
+                bfsQueue.push((nextNode,Action))
+
 
 def uniformCostSearch(problem):
     """Search the node of least total cost first."""
