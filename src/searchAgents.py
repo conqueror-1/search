@@ -295,14 +295,24 @@ class CornersProblem(search.SearchProblem):
         space)
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+         return (self.startingPosition,[])
 
     def isGoalState(self, state):
         """
         Returns whether this search state is a goal state of the problem.
         """
         "*** YOUR CODE HERE ***"
-        util.raiseNotDefined()
+        node = state[0]
+        cornersVisited = state[1]
+
+        if node in self.corners:
+            if not node in cornersVisited:
+                cornersVisited.append(node)
+            if len(cornersVisited) == 4:
+                return True
+            else:
+                return False
+        return False        #bug fixed 
 
     def getSuccessors(self, state):
         """
