@@ -107,7 +107,7 @@ def depthFirstSearch(problem):
             if problem.isGoalState(currNode):
                 return action
             
-            for nextNode, actions, cost in problem.getSuccessor(currNode):
+            for nextNode, actions, cost in problem.getSuccessors(currNode):
                 Action = action + [actions]
                 dfsStack.push((nextNode,Action))
 
